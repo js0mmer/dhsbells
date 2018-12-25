@@ -1,0 +1,40 @@
+html, body {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html {
+  height: 100vh;
+  background-image: radial-gradient(blue, navy);
+  background-color: navy;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+body {
+  padding: 40px 0px;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 5px;
+}
+
+tr {
+  border-bottom: 1px solid #d8d8d8;
+}
+
+#schedule-header {
+  display: none;
+}
+
+#next-period {
+  margin-bottom: 40px;
+}
