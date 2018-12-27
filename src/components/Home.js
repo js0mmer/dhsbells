@@ -12,9 +12,9 @@ import tuesday2 from '../schedules/finals2/tuesday';
 import wednesday2 from '../schedules/finals2/wednesday';
 import thursday2 from '../schedules/finals2/thursday';
 
-var date = new Date();
 
-function getSchedule() {
+function getTodaysSchedule() {
+  var date = new Date();
   var day = date.getDay();
 
   if (day != 0 && day != 6) {
@@ -67,7 +67,7 @@ function beforeSchool(periods, time) {
 
 function showPeriod() {
   var time = rawTime();
-  var s = getSchedule();
+  var s = getTodaysSchedule();
   
   if (beforeSchool(s.periods, time)) {
     return (
@@ -110,15 +110,13 @@ function showPeriod() {
   return <h3 id="period">No Class</h3>;
 }
 
-function showSchedule() {
-  var s = getSchedule();
-
+function showSchedule(s, header) {
   if (s == null) {
     return s;
   } else {
     return (
       <div>
-        <h3 id="schedule-header">Today's Schedule</h3>
+        <h3 id="schedule-header">{header}</h3>
         <table id="schedule">
           <thead>
             <tr>
@@ -168,6 +166,7 @@ function parseRawTime(t) {
 }
 
 function rawTime() {
+  var date = new Date();
   var minutes = date.getMinutes().toString();
 
   if(minutes.length == 1) {
@@ -178,6 +177,7 @@ function rawTime() {
 }
 
 function fancyTime() {
+  var date = new Date();
   var hours = date.getHours();
   var minutes = date.getMinutes().toString();
 
@@ -197,7 +197,7 @@ class Home extends Component {
     return (
       <div>
         {showPeriod()}
-        {showSchedule()}
+        {showSchedule(getTodaysSchedule(), "Today's Schedule")}
       </div>
     );
   }
