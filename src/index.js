@@ -9,8 +9,8 @@ import './style.css';
 const AppRouter = () => (
   <Router>
     <div className="app">
-      <Route path="/" exact component={Home} />
-      <Route path="/schedules" component={Schedules} />
+      <Route path={`${process.env.PUBLIC_URL}/`} exact component={Home} />
+      <Route path={`${process.env.PUBLIC_URL}/schedules`} component={Schedules} />
     </div>
   </Router>
 );
