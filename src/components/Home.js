@@ -68,6 +68,10 @@ function beforeSchool(periods, time) {
 function showPeriod() {
   var time = rawTime();
   var s = getTodaysSchedule();
+
+  if (s == null) {
+    return <h3 id="period">No Class</h3>;
+  }
   
   if (beforeSchool(s.periods, time)) {
     return (
@@ -106,13 +110,11 @@ function showPeriod() {
       );
     }
   }
-
-  return <h3 id="period">No Class</h3>;
 }
 
 function showSchedule(s, header) {
   if (s == null) {
-    return s;
+    return;
   } else {
     return (
       <div>
