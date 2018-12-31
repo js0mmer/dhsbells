@@ -12,7 +12,7 @@ const AppRouter = () => (
       <Route path="/" exact component={Home} />
     </div>
   </Router>
-)
+);
 
 ReactDOM.render(<AppRouter />, document.getElementById('root'));
 
