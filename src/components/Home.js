@@ -201,7 +201,7 @@ class Home extends Component {
       <div>
         {showPeriod()}
         {showSchedule(getTodaysSchedule(), "Today's Schedule")}
-        <Link to="/schedules">View all schedules</Link>
+        <Link to={`${process.env.PUBLIC_URL}/schedules`}>View all schedules</Link>
       </div>
     );
   }

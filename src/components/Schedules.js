@@ -8,24 +8,24 @@ const Schedules = ({ match }) => (
     <h2>Schedules</h2>
     <ul>
       <li>
-        <Link to={`${match.url}/normal`}>Normal</Link>
+        <Link to={`${process.env.PUBLIC_URL}/${match.url}/normal`}>Normal</Link>
       </li>
       <li>
-        <Link to={`${match.url}/wednesday`}>Wednesday</Link>
+        <Link to={`${process.env.PUBLIC_URL}/${match.url}/wednesday`}>Wednesday</Link>
       </li>
       <li>
-        <Link to={`${match.url}/rally`}>Rally</Link>
+        <Link to={`${process.env.PUBLIC_URL}/${match.url}/rally`}>Rally</Link>
       </li>
     </ul>
 
-    <Route path={`${match.path}/:id`} component={Schedule} />
+    <Route path={`${process.env.PUBLIC_URL}/${match.path}/:id`} component={Schedule} />
     <Route
       exact
-      path={match.path}
+      path={`${process.env.PUBLIC_URL}/${match.path}`}
       render={() => <h3>Please select a schedule.</h3>}
     />
 
-    <Link to="/">Back to Today's Schedule</Link>
+    <Link to={`${process.env.PUBLIC_URL}/`}>Back to Today's Schedule</Link>
   </div>
 );
 
