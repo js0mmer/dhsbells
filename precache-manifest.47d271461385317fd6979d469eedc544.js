@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/dhsbells/static/css/main.4ed8e82c.chunk.css"
   },
   {
-    "revision": "8719f3f9a4ec801dd14cbdecdffec628",
+    "revision": "54ccba77bdc4aa360a387248b2a8e354",
     "url": "/dhsbells/index.html"
   }
 ];
