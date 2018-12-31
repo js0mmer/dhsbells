@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../style.css';
+import { Link } from "react-router-dom";
 import normal from '../schedules/normal';
 import wednesday from '../schedules/wednesday';
 // import rally from '../schedules/rally';
@@ -200,6 +201,7 @@ class Home extends Component {
       <div>
         {showPeriod()}
         {showSchedule(getTodaysSchedule(), "Today's Schedule")}
+        <Link to="/schedules">View all schedules</Link>
       </div>
     );
   }

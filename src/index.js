@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import { HashRouter as Router, Route } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 import Home from './components/Home';
-//import Schedules from './components/Schedules';
+import Schedules from './components/Schedules';
 import './style.css';
 
 const AppRouter = () => (
   <Router>
     <div className="app">
       <Route path="/" exact component={Home} />
+      <Route path="/schedules" component={Schedules} />
     </div>
   </Router>
 );
