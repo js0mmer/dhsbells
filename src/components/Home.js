@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../style.css';
 import normal from '../schedules/normal';
 import wednesday from '../schedules/wednesday';
-import rally from '../schedules/rally';
+// import rally from '../schedules/rally';
 import tuesday1 from '../schedules/finals1/tuesday';
 import wednesday1 from '../schedules/finals1/wednesday';
 import thursday1 from '../schedules/finals1/thursday';
@@ -17,32 +17,32 @@ function getTodaysSchedule() {
   var date = new Date();
   var day = date.getDay();
 
-  if (day != 0 && day != 6) {
+  if (day !== 0 && day !== 6) {
     var schedule = normal;
     
-    if (day == 3) {
+    if (day === 3) {
       schedule = wednesday;
     }
     
     // Sem 1 Finals
-    if (date.getMonth() == 11) {
-      if (date.getDate() == 18) {
+    if (date.getMonth() === 11) {
+      if (date.getDate() === 18) {
         schedule = tuesday1;
-      } else if (date.getDate() == 19) {
+      } else if (date.getDate() === 19) {
         schedule = wednesday1;
-      } else if (date.getDate() == 20) {
+      } else if (date.getDate() === 20) {
         schedule = thursday1;
-      } else if (date.getDate() == 21) {
+      } else if (date.getDate() === 21) {
         schedule = friday1;
       }
-    } else if (date.getMonth() == 4) { // Sem 2 Finals
-      if (date.getDate() == 25) {
+    } else if (date.getMonth() === 4) { // Sem 2 Finals
+      if (date.getDate() === 25) {
         schedule = friday2;
-      } else if (date.getDate() == 29) {
+      } else if (date.getDate() === 29) {
         schedule = tuesday2;
-      } else if (date.getDate() == 30) {
+      } else if (date.getDate() === 30) {
         schedule = wednesday2;
-      } else if (date.getDate() == 31) {
+      } else if (date.getDate() === 31) {
         schedule = thursday2;
       }
     }
@@ -156,7 +156,7 @@ function convertTo12Hour(t) {
     return t + " AM";
   } else if(parseInt(t.substring(0, 2)) < 12) {
     return t + " AM";
-  } else if(parseInt(t.substring(0, 2)) == 12) {
+  } else if(parseInt(t.substring(0, 2)) === 12) {
     return t + " PM";
   } else {
     return (parseInt(t.substring(0, 2)) - 12) + t.substring(2, 5) + " PM";
@@ -171,28 +171,28 @@ function rawTime() {
   var date = new Date();
   var minutes = date.getMinutes().toString();
 
-  if(minutes.length == 1) {
+  if(minutes.length === 1) {
     minutes = "0" + minutes;
   }
 
   return parseInt(date.getHours() + minutes);
 }
 
-function fancyTime() {
-  var date = new Date();
-  var hours = date.getHours();
-  var minutes = date.getMinutes().toString();
+// function fancyTime() {
+//   var date = new Date();
+//   var hours = date.getHours();
+//   var minutes = date.getMinutes().toString();
 
-  if(hours > 12) {
-    hours = hours - 12;
-  }
+//   if(hours > 12) {
+//     hours = hours - 12;
+//   }
 
-  if(minutes.length == 1) {
-    minutes = "0" + minutes;
-  }
+//   if(minutes.length === 1) {
+//     minutes = "0" + minutes;
+//   }
 
-  return hours + ":" + minutes + (date.getHours() > 12 ? " PM" : " AM");
-}
+//   return hours + ":" + minutes + (date.getHours() > 12 ? " PM" : " AM");
+// }
 
 class Home extends Component {
   render() {
