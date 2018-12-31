@@ -8,13 +8,13 @@ const Schedules = ({ match }) => (
     <h2>Schedules</h2>
     <ul>
       <li>
-        <Link to={`${process.env.PUBLIC_URL}/${match.url}/normal`}>Normal</Link>
+        <Link to={`${match.url}/normal`}>Normal</Link>
       </li>
       <li>
-        <Link to={`${process.env.PUBLIC_URL}/${match.url}/wednesday`}>Wednesday</Link>
+        <Link to={`${match.url}/wednesday`}>Wednesday</Link>
       </li>
       <li>
-        <Link to={`${process.env.PUBLIC_URL}/${match.url}/rally`}>Rally</Link>
+        <Link to={`${match.url}/rally`}>Rally</Link>
       </li>
     </ul>
 
