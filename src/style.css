@@ -1,25 +1,23 @@
 html, body {
   text-align: center;
-  margin: 0;
-  padding: 0;
   color: #fff;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 html {
-  height: 100vh;
-  background-image: radial-gradient(blue, navy);
-  background-color: navy;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #002892;
 }
 
 body {
-  padding: 40px 0px;
+  padding-top: 40px;
 }
 
 a:link, a:visited {
   color: #fff;
+}
+
+h1, h2, h3 {
+  font-weight: 500;
 }
 
 table {
@@ -35,11 +33,11 @@ tr {
   border-bottom: 1px solid #d8d8d8;
 }
 
-#next-period {
-  margin-bottom: 40px;
-}
-
 ul {
   list-style-type: none;
   padding-left: 0;
+}
+
+#next-period {
+  margin-bottom: 40px;
 }
