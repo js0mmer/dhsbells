@@ -18,10 +18,10 @@ const Schedules = ({ match }) => (
       </li>
     </ul>
 
-    <Route path={`${process.env.PUBLIC_URL}/${match.path}/:id`} component={Schedule} />
+    <Route path={`${match.path}/:id`} component={Schedule} />
     <Route
       exact
-      path={`${process.env.PUBLIC_URL}/${match.path}`}
+      path={match.path}
       render={() => <h3>Please select a schedule.</h3>}
     />
 
