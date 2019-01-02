@@ -111,6 +111,8 @@ function showPeriod() {
       );
     }
   }
+  
+  return <h3 id="period">No Class</h3>;
 }
 
 function showSchedule(s, header) {
