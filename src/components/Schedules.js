@@ -17,7 +17,7 @@ const Schedules = ({ match }) => (
         <Link to={`${match.url}/rally`}>Rally</Link>
       </li>
       <li>
-        <Link to={`${match.url}/rally`}>Assembly</Link>
+        <Link to={`${match.url}/assembly`}>Assembly</Link>
       </li>
     </ul>
 
