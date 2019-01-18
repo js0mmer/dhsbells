@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import normal from '../schedules/normal';
 import wednesday from '../schedules/wednesday';
 // import rally from '../schedules/rally';
+import assembly from '../schedules/assembly';
 import tuesday1 from '../schedules/finals1/tuesday';
 import wednesday1 from '../schedules/finals1/wednesday';
 import thursday1 from '../schedules/finals1/thursday';
@@ -46,6 +47,8 @@ function getTodaysSchedule() {
       } else if (date.getDate() === 31) {
         schedule = thursday2;
       }
+    } else if (date.getMonth() === 0 && date.getDate() === 18) { // Assembly
+      schedule = assembly;
     }
 
     return schedule;
