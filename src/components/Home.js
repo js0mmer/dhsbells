@@ -73,9 +73,7 @@ function showPeriod() {
   var time = rawTime();
   var s = getTodaysSchedule();
 
-  if (s == null) {
-    return <h3 id="period">No Class</h3>;
-  }
+  if (s == null) return <h3 id="period">No Class</h3>;
   
   if (beforeSchool(s.periods, time)) {
     return (
@@ -158,11 +156,11 @@ function genRows(s) {
 }
 
 function convertTo12Hour(t) {
-  if(t.length < 5) {
+  if (t.length < 5) {
     return t + " AM";
-  } else if(parseInt(t.substring(0, 2)) < 12) {
+  } else if (parseInt(t.substring(0, 2)) < 12) {
     return t + " AM";
-  } else if(parseInt(t.substring(0, 2)) === 12) {
+  } else if (parseInt(t.substring(0, 2)) === 12) {
     return t + " PM";
   } else {
     return (parseInt(t.substring(0, 2)) - 12) + t.substring(2, 5) + " PM";
@@ -177,9 +175,7 @@ function rawTime() {
   var date = new Date();
   var minutes = date.getMinutes().toString();
 
-  if(minutes.length === 1) {
-    minutes = "0" + minutes;
-  }
+  if (minutes.length === 1) minutes = "0" + minutes;
 
   return parseInt(date.getHours() + minutes);
 }

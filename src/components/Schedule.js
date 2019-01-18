@@ -81,11 +81,11 @@ function genRows(s) {
 }
 
 function convertTo12Hour(t) {
-  if(t.length < 5) {
+  if (t.length < 5) {
     return t + " AM";
-  } else if(parseInt(t.substring(0, 2)) < 12) {
+  } else if (parseInt(t.substring(0, 2)) < 12) {
     return t + " AM";
-  } else if(parseInt(t.substring(0, 2)) === 12) {
+  } else if (parseInt(t.substring(0, 2)) === 12) {
     return t + " PM";
   } else {
     return (parseInt(t.substring(0, 2)) - 12) + t.substring(2, 5) + " PM";
