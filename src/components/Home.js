@@ -12,7 +12,7 @@ import friday2 from '../schedules/finals2/friday';
 import tuesday2 from '../schedules/finals2/tuesday';
 import wednesday2 from '../schedules/finals2/wednesday';
 import thursday2 from '../schedules/finals2/thursday';
-import { convertTo12Hour, showSchedule } from '../utils';
+import { convertTo12Hour, buildSchedule } from '../utils';
 
 function getTodaysSchedule() {
   var date = new Date();
@@ -113,6 +113,16 @@ function showPeriod() {
   }
   
   return <h3 id="period">No Class</h3>;
+}
+
+function showSchedule(s, header) {
+  var schedule = buildSchedule(s, header);
+
+  if (schedule != null) {
+    return schedule;
+  } else {
+    return;
+  }
 }
 
 function parseRawTime(t) {

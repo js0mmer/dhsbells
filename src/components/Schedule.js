@@ -11,7 +11,7 @@ import friday2 from '../schedules/finals2/friday';
 import tuesday2 from '../schedules/finals2/tuesday';
 import wednesday2 from '../schedules/finals2/wednesday';
 import thursday2 from '../schedules/finals2/thursday';
-import { showSchedule } from '../utils';
+import { buildSchedule } from '../utils';
 
 function getSchedule(path) {
   switch (path) {
@@ -41,6 +41,16 @@ function getSchedule(path) {
       return thursday2;
     default:
       return null;
+  }
+}
+
+function showSchedule(s, header) {
+  var schedule = buildSchedule(s, header);
+
+  if (schedule != null) {
+    return schedule;
+  } else {
+    return <h3>Error: Schedule Not Found</h3>;
   }
 }
 
