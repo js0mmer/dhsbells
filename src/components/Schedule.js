@@ -1,5 +1,4 @@
 import React from 'react';
-import '../style.css';
 import normal from '../schedules/normal';
 import wednesday from '../schedules/wednesday';
 import rally from '../schedules/rally';
