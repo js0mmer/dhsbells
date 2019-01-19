@@ -2,7 +2,7 @@ import React from 'react';
 
 export function buildSchedule(s, header) {
   if (s == null) {
-    return <h3>Error: Schedule Not Found</h3>;
+    return null;
   } else {
     return (
       <div>
