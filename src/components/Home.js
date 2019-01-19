@@ -12,7 +12,7 @@ import friday2 from '../schedules/finals2/friday';
 import tuesday2 from '../schedules/finals2/tuesday';
 import wednesday2 from '../schedules/finals2/wednesday';
 import thursday2 from '../schedules/finals2/thursday';
-import { convertTo12Hour, showSchedule } from '../utils.js';
+import { convertTo12Hour, showSchedule } from '../utils';
 
 function getTodaysSchedule() {
   var date = new Date();

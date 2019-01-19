@@ -11,7 +11,7 @@ import friday2 from '../schedules/finals2/friday';
 import tuesday2 from '../schedules/finals2/tuesday';
 import wednesday2 from '../schedules/finals2/wednesday';
 import thursday2 from '../schedules/finals2/thursday';
-import { showSchedule } from '../utils.js';
+import { showSchedule } from '../utils';
 
 function getSchedule(path) {
   switch (path) {
