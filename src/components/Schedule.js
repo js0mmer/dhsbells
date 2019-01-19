@@ -14,7 +14,7 @@ import thursday2 from '../schedules/finals2/thursday';
 import { showSchedule } from '../utils.js';
 
 function getSchedule(path) {
-  switch(path) {
+  switch (path) {
     case "normal":
       return normal;
     case "wednesday":
