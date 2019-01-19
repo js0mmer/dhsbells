@@ -1,6 +1,6 @@
 import React from 'react';
 
-function showSchedule(s, header) {
+export function showSchedule(s, header) {
   if (s == null) {
     return <h3>Error: Schedule Not Found</h3>;
   } else {
@@ -39,7 +39,7 @@ function genRows(s) {
   return html;
 }
 
-function convertTo12Hour(t) {
+export function convertTo12Hour(t) {
   if (t.length < 5) {
     return t + " AM";
   } else if (parseInt(t.substring(0, 2)) < 12) {
