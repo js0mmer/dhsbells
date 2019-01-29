@@ -51,7 +51,7 @@ function showSchedule(s, id) {
   var header = id.substring(0, 1).toUpperCase() + id.substring(1);
 
   if (header.includes('-')) {
-    header = header.split('-')[0] + header.split('-')[1].substring(0, 1).toUpperCase() + header.split('-')[1].substring(1)
+    header = header.split('-')[0] + ' ' + header.split('-')[1].substring(0, 1).toUpperCase() + header.split('-')[1].substring(1)
   }
 
   var schedule = buildSchedule(s, header + ' Schedule');
