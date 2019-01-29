@@ -3,7 +3,7 @@ import normal from '../schedules/normal';
 import wednesday from '../schedules/wednesday';
 import rally from '../schedules/rally';
 import assembly from '../schedules/assembly';
-import previewday from '../schedules/previewday';
+import previewDay from '../schedules/preview-day';
 import tuesday1 from '../schedules/finals1/tuesday';
 import wednesday1 from '../schedules/finals1/wednesday';
 import thursday1 from '../schedules/finals1/thursday';
@@ -24,8 +24,8 @@ function getSchedule(path) {
       return rally;
     case "assembly":
       return assembly;
-    case "previewday":
-      return previewday;
+    case "preview-day":
+      return previewDay;
     case "finals1/tuesday":
       return tuesday1;
     case "finals1/wednesday":
@@ -47,8 +47,14 @@ function getSchedule(path) {
   }
 }
 
-function showSchedule(s, header) {
-  var schedule = buildSchedule(s, header);
+function showSchedule(s, id) {
+  var header = id.substring(0, 1).toUpperCase() + id.substring(1);
+
+  if (header.includes('-')) {
+    header = header.split('-')[0] + header.split('-')[1].substring(0, 1).toUpperCase() + header.split('-')[1].substring(1)
+  }
+
+  var schedule = buildSchedule(s, header + ' Schedule');
 
   if (schedule != null) {
     return schedule;
@@ -59,7 +65,7 @@ function showSchedule(s, header) {
 
 const Schedule = ({ match }) => (
   <div>
-    {showSchedule(getSchedule(match.params.id), `${match.params.id.substring(0, 1).toUpperCase() + match.params.id.substring(1)} Schedule`)}
+    {showSchedule(getSchedule(match.params.id), match.params.id)}
   </div>
 );
 
