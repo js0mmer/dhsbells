@@ -3,6 +3,7 @@ import normal from '../schedules/normal';
 import wednesday from '../schedules/wednesday';
 import rally from '../schedules/rally';
 import assembly from '../schedules/assembly';
+import previewday from '../schedules/previewday';
 import tuesday1 from '../schedules/finals1/tuesday';
 import wednesday1 from '../schedules/finals1/wednesday';
 import thursday1 from '../schedules/finals1/thursday';
@@ -23,6 +24,8 @@ function getSchedule(path) {
       return rally;
     case "assembly":
       return assembly;
+    case "previewday":
+      return previewday;
     case "finals1/tuesday":
       return tuesday1;
     case "finals1/wednesday":

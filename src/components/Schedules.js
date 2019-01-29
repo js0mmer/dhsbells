@@ -18,6 +18,9 @@ const Schedules = ({ match }) => (
       <li>
         <Link to={`${match.url}/assembly`}>Assembly</Link>
       </li>
+      <li>
+        <Link to={`${match.url}/previewday`}>Preview Day</Link>
+      </li>
     </ul>
 
     <Route path={`${match.path}/:id`} component={Schedule} />
