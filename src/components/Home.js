@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import normal from '../schedules/normal';
 import wednesday from '../schedules/wednesday';
-// import rally from '../schedules/rally';
+import rally from '../schedules/rally';
 // import assembly from '../schedules/assembly';
 import previewDay from '../schedules/preview-day';
 import tuesday1 from '../schedules/finals1/tuesday';
@@ -49,6 +49,8 @@ function getTodaysSchedule() {
       }
     } else if (date.getMonth() === 0 && date.getDate() === 30) { // Preview Day
       schedule = previewDay;
+    } else if (date.getMonth() === 1 && date.getDate() === 14) { // Rally
+      schedule = rally;
     }
 
     return schedule;
