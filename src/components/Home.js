@@ -49,7 +49,7 @@ function getTodaysSchedule() {
       }
     } else if (date.getMonth() === 0 && date.getDate() === 30) { // Preview Day
       schedule = previewDay;
-    } else if (date.getMonth() === 1 && date.getDate() === 14) { // Rally
+    } else if (date.getMonth() === 1 && date.getDate() === 15) { // Rally
       schedule = rally;
     }
 
