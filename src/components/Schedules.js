@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import Schedule from './Schedule';
 import { parseDate } from '../utils';
 
@@ -8,7 +8,7 @@ function Day(props) {
 
   var date = props.date;
   var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  var months = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+  var months = ['January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September', 'October', 'November', 'December'];
 
   var suffix = 'th';
   var d = date.getDate().toString();
@@ -43,7 +43,7 @@ class Schedules extends React.Component {
     return (
       <div>
         <h1>Schedules</h1>
-        <input type="date" min="2018-08-14" max="2019-05-31" value={this.state.value} onChange={this.handleChange} />
+        <input type='date' min='2018-08-14' max='2019-05-31' value={this.state.value} onChange={this.handleChange} />
         <br />
         <Day date={parseDate(this.state.value)} />
         <Schedule date={parseDate(this.state.value)} />
