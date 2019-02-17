@@ -15,7 +15,7 @@ const bottomMargin = {
   marginBottom: '40px'
 }
 
-function showPeriod() {
+function Info() {
   var date = new Date();
   var time = rawTime(date);
   var s = getScheduleFromDate(date);
@@ -63,7 +63,7 @@ function showPeriod() {
   return <h3>No Class</h3>;
 }
 
-function showSchedule() {
+function TodaysSchedule() {
   var date = new Date();
   var schedule = getScheduleFromDate(date);
 
@@ -75,7 +75,7 @@ function showSchedule() {
       </div>
     );
   } else {
-    return;
+    return null;
   }
 }
 
@@ -91,8 +91,8 @@ class Home extends Component {
   render() {
     return (
       <div>
-        {showPeriod()}
-        {showSchedule()}
+        <Info />
+        <TodaysSchedule />
         <Link to={`${process.env.PUBLIC_URL}/schedules`}>View all schedules</Link>
       </div>
     );
