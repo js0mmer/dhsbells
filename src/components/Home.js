@@ -16,13 +16,13 @@ function showPeriod() {
   var time = rawTime(date);
   var s = getScheduleFromDate(date);
 
-  if (s == null) return <h1 id="period">No Class</h1>;
+  if (s == null) return <h1>No Class</h1>;
   
   if (beforeSchool(s.periods, time)) {
     return (
       <div>
-        <h3 id="period">No Class</h3>
-        <h1 id="period-end">{s.periods[0].name} starts at {convertTo12Hour(s.periods[0].start)}</h1>
+        <h3>No Class</h3>
+        <h1>{s.periods[0].name} starts at {convertTo12Hour(s.periods[0].start)}</h1>
       </div>
     );
   }
@@ -32,31 +32,31 @@ function showPeriod() {
       if (i < s.periods.length - 1) {
         return (
           <div>
-            <h3 id="period">{s.periods[i].name}</h3>
-            <h1 id="period-end">Ends at {convertTo12Hour(s.periods[i].end)}</h1>
+            <h3>{s.periods[i].name}</h3>
+            <h1>Ends at {convertTo12Hour(s.periods[i].end)}</h1>
             <h3 id="next-period">Next: {s.periods[i + 1].name} {convertTo12Hour(s.periods[i + 1].start)} - {convertTo12Hour(s.periods[i + 1].end)}</h3>
           </div>
         );
       } else {
         return (
           <div>
-            <h3 id="period">{s.periods[i].name}</h3>
-            <h1 id="period-end">Ends at {convertTo12Hour(s.periods[i].end)}</h1>
+            <h3>{s.periods[i].name}</h3>
+            <h1>Ends at {convertTo12Hour(s.periods[i].end)}</h1>
           </div>
         );
       }
     } else if (inPassingPeriod(s.periods, i, time)) {
       return (
         <div>
-          <h3 id="period">Passing Period</h3>
-          <h1 id="period-end">Ends at {convertTo12Hour(s.periods[i + 1].start)}</h1>
+          <h3>Passing Period</h3>
+          <h1>Ends at {convertTo12Hour(s.periods[i + 1].start)}</h1>
           <h3 id="next-period">Next: {s.periods[i + 1].name} {convertTo12Hour(s.periods[i + 1].start)} - {convertTo12Hour(s.periods[i + 1].end)}</h3>
         </div>
       );
     }
   }
   
-  return <h3 id="period">No Class</h3>;
+  return <h3>No Class</h3>;
 }
 
 function showSchedule() {
