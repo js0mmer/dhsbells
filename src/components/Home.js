@@ -1,62 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import normal from '../schedules/normal';
-import wednesday from '../schedules/wednesday';
-import rally from '../schedules/rally';
-// import assembly from '../schedules/assembly';
-import previewDay from '../schedules/preview-day';
-import tuesday1 from '../schedules/finals1/tuesday';
-import wednesday1 from '../schedules/finals1/wednesday';
-import thursday1 from '../schedules/finals1/thursday';
-import friday1 from '../schedules/finals1/friday';
-import friday2 from '../schedules/finals2/friday';
-import tuesday2 from '../schedules/finals2/tuesday';
-import wednesday2 from '../schedules/finals2/wednesday';
-import thursday2 from '../schedules/finals2/thursday';
-import { convertTo12Hour, buildSchedule } from '../utils';
+import { convertTo12Hour, buildSchedule, getScheduleFromDate } from '../utils';
 
 function getTodaysSchedule() {
-  var date = new Date();
-  var day = date.getDay();
-
-  if (day !== 0 && day !== 6) {
-    var schedule = normal;
-    
-    if (day === 3) {
-      schedule = wednesday;
-    }
-    
-    // Sem 1 Finals
-    if (date.getMonth() === 11) {
-      if (date.getDate() === 18) {
-        schedule = tuesday1;
-      } else if (date.getDate() === 19) {
-        schedule = wednesday1;
-      } else if (date.getDate() === 20) {
-        schedule = thursday1;
-      } else if (date.getDate() === 21) {
-        schedule = friday1;
-      }
-    } else if (date.getMonth() === 4) { // Sem 2 Finals
-      if (date.getDate() === 25) {
-        schedule = friday2;
-      } else if (date.getDate() === 29) {
-        schedule = tuesday2;
-      } else if (date.getDate() === 30) {
-        schedule = wednesday2;
-      } else if (date.getDate() === 31) {
-        schedule = thursday2;
-      }
-    } else if (date.getMonth() === 0 && date.getDate() === 30) { // Preview Day
-      schedule = previewDay;
-    } else if (date.getMonth() === 1 && date.getDate() === 15) { // Rally
-      schedule = rally;
-    }
-
-    return schedule;
-  } else {
-    return null;
-  }
+  return getScheduleFromDate(new Date());
 }
 
 function inPeriod(periods, i, time) {
