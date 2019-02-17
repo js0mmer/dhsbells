@@ -21,6 +21,8 @@ import blockWedsApril from './schedules/block/april/wednesday.js';
 import blockFriday from './schedules/block/april/friday.js';
 
 export function getScheduleFromDate(date) {
+  if (date === null) return null;
+
   var day = date.getDay();
 
   if (day !== 0 && day !== 6) { // if not sunday and not saturday
@@ -123,4 +125,11 @@ export function convertTo12Hour(t) {
   } else {
     return (parseInt(t.substring(0, 2)) - 12) + t.substring(2, 5) + " PM";
   }
+}
+
+export function parseDate(input) {
+  if (input === '') return;
+
+  var parts = input.split('-');
+  return new Date(parts[0], parts[1]-1, parts[2]); // months are 0-11
 }

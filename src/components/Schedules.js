@@ -1,37 +1,56 @@
 import React from 'react';
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Schedule from './Schedule';
+import { parseDate } from '../utils';
 
-const Schedules = ({ match }) => (
-  <div>
-    <h2>Schedules</h2>
-    <ul>
-      <li>
-        <Link to={`${match.url}/normal`}>Normal</Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/wednesday`}>Wednesday</Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/rally`}>Rally</Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/assembly`}>Assembly</Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/preview-day`}>Preview Day</Link>
-      </li>
-    </ul>
+function Day(props) {
+  if (props.date == null) return null;
 
-    <Route path={`${match.path}/:id`} component={Schedule} />
-    <Route
-      exact
-      path={match.path}
-      render={() => <h3>Please select a schedule.</h3>}
-    />
+  var date = props.date;
+  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var months = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
 
-    <Link to={`${process.env.PUBLIC_URL}/`}>Back to Today's Schedule</Link>
-  </div>
-);
+  var suffix = 'th';
+  var d = date.getDate().toString();
+  if (!d.startsWith('1')) {
+    if (d.endsWith('1')) {
+      suffix = 'st';
+    } else if (d.endsWith('2')) {
+      suffix = 'nd';
+    } else if (d.endsWith('3')) {
+      suffix = 'rd';
+    }
+  } else if (d === '1') {
+    suffix = 'st';
+  }
+
+  return <h2>{days[date.getDay()]} {months[date.getMonth()]} {d}{suffix}</h2>
+}
+
+class Schedules extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Schedules</h1>
+        <input type="date" min="2018-08-14" max="2019-05-31" value={this.state.value} onChange={this.handleChange} />
+        <br />
+        <Day date={parseDate(this.state.value)} />
+        <Schedule date={parseDate(this.state.value)} />
+        <Link to={`${process.env.PUBLIC_URL}/`}>Back to Today's Schedule</Link>
+      </div>
+    );
+  }
+}
 
 export default Schedules;

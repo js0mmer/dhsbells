@@ -1,28 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import { convertTo12Hour, buildSchedule, getScheduleFromDate } from '../utils';
+import { convertTo12Hour, getScheduleFromDate } from '../utils';
+import Schedule from './Schedule';
 
-function getTodaysSchedule() {
-  return getScheduleFromDate(new Date());
-}
+const inPeriod = (periods, i, time) => time >= parseRawTime(periods[i].start) && time < parseRawTime(periods[i].end);
 
-function inPeriod(periods, i, time) {
-  return time >= parseRawTime(periods[i].start) && time < parseRawTime(periods[i].end);
-}
+const inPassingPeriod = (periods, i, time) => time >= parseRawTime(periods[i].end) && i < periods.length - 1 && time < parseRawTime(periods[i + 1].start);
 
-function inPassingPeriod(periods, i, time) {
-  return time >= parseRawTime(periods[i].end) && i < periods.length - 1 && time < parseRawTime(periods[i + 1].start);
-}
+const beforeSchool = (periods, time) => time < parseRawTime(periods[0].start);
 
-function beforeSchool(periods, time) {
-  return time < parseRawTime(periods[0].start);
-}
+const parseRawTime = (t) => parseInt(t.replace(":", ""));
 
 function showPeriod() {
-  var time = rawTime();
-  var s = getTodaysSchedule();
+  var date = new Date();
+  var time = rawTime(date);
+  var s = getScheduleFromDate(date);
 
-  if (s == null) return <h3 id="period">No Class</h3>;
+  if (s == null) return <h1 id="period">No Class</h1>;
   
   if (beforeSchool(s.periods, time)) {
     return (
@@ -65,22 +59,23 @@ function showPeriod() {
   return <h3 id="period">No Class</h3>;
 }
 
-function showSchedule(s, header) {
-  var schedule = buildSchedule(s, header);
+function showSchedule() {
+  var date = new Date();
+  var schedule = getScheduleFromDate(date);
 
   if (schedule != null) {
-    return schedule;
+    return (
+      <div>
+        <h3>Today's Schedule</h3>
+        <Schedule date={date} />
+      </div>
+    );
   } else {
     return;
   }
 }
 
-function parseRawTime(t) {
-  return parseInt(t.replace(":", ""));
-}
-
-function rawTime() {
-  var date = new Date();
+function rawTime(date) {
   var minutes = date.getMinutes().toString();
 
   if (minutes.length === 1) minutes = "0" + minutes;
@@ -88,28 +83,12 @@ function rawTime() {
   return parseInt(date.getHours() + minutes);
 }
 
-// function fancyTime() {
-//   var date = new Date();
-//   var hours = date.getHours();
-//   var minutes = date.getMinutes().toString();
-
-//   if(hours > 12) {
-//     hours = hours - 12;
-//   }
-
-//   if(minutes.length === 1) {
-//     minutes = "0" + minutes;
-//   }
-
-//   return hours + ":" + minutes + (date.getHours() > 12 ? " PM" : " AM");
-// }
-
 class Home extends Component {
   render() {
     return (
       <div>
         {showPeriod()}
-        {showSchedule(getTodaysSchedule(), "Today's Schedule")}
+        {showSchedule()}
         <Link to={`${process.env.PUBLIC_URL}/schedules`}>View all schedules</Link>
       </div>
     );
