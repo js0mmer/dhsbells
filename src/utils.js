@@ -22,9 +22,9 @@ import blockFriday from './schedules/block/april/friday.js';
 
 function noSchool(date) {
   if (date.getMonth() === 2) { // march
-    if (date.getDay() === 14 || date.getDay() === 17) {
-      return true;
-    }
+    return date.getDate() === 14 || date.getDate() === 17; // teacher work days
+  } else if (date.getMonth() === 3) { // april
+    return date.getDate() >= 1 && date.getDate() <= 5; // spring break
   }
 
   return false;
