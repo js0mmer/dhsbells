@@ -20,8 +20,18 @@ import blockTuesThurs from './schedules/block/april/tues_thurs.js';
 import blockWedsApril from './schedules/block/april/wednesday.js';
 import blockFriday from './schedules/block/april/friday.js';
 
+function noSchool(date) {
+  if (date.getMonth() === 2) { // march
+    if (date.getDay() === 14 || date.getDay() === 17) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 export function getScheduleFromDate(date) {
-  if (date === null) return null;
+  if (date === null || noSchool) return null;
 
   var day = date.getDay();
 
