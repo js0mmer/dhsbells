@@ -21,11 +21,16 @@ import blockWedsApril from './schedules/block/april/wednesday.js';
 import blockFriday from './schedules/block/april/friday.js';
 
 function noSchool(date) {
-  if (date.getMonth() === 2) { // march
-    return date.getDate() === 14 || date.getDate() === 17; // teacher work days
-  } else if (date.getMonth() === 3) { // april
-    return date.getDate() >= 1 && date.getDate() <= 5; // spring break
-  } else if (date.getMonth() >= 5 && date.getMonth() < 7) { // summer
+  var month = date.getMonth() + 1;
+  date = date.getDate();
+
+  if (date.getDay() === 0 || date.getDay() === 6) { // weekends
+    return true;
+  } else if (month === 3) { // march
+    return date === 14 || date === 17; // teacher work days
+  } else if (month === 4) { // april
+    return date >= 1 && date <= 5; // spring break
+  } else if (month >= 6 && month < 8) { // summer
     return true;
   }
 
@@ -36,56 +41,54 @@ export function getScheduleFromDate(date) {
   if (date === null || noSchool) return null;
 
   var day = date.getDay();
+  var month = date.getMonth() + 1;
+  date = date.getDate();
 
-  if (day !== 0 && day !== 6) { // if not sunday and not saturday
-    var schedule = normal; // default to normal schedule
-    
-    if (day === 3) schedule = wednesday; // default to normal weds schedule on wednesdays
-    
-    if (date.getMonth() === 11) { // Sem 1 Finals
-      if (date.getDate() === 18) {
-        schedule = tuesday1;
-      } else if (date.getDate() === 19) {
-        schedule = wednesday1;
-      } else if (date.getDate() === 20) {
-        schedule = thursday1;
-      } else if (date.getDate() === 21) {
-        schedule = friday1;
-      }
-    } else if (date.getMonth() === 4) { // Sem 2 Finals
-       if (date.getDate() === 28) {
-        schedule = tuesday2;
-      } else if (date.getDate() === 39) {
-        schedule = wednesday2;
-      } else if (date.getDate() === 30) {
-        schedule = thursday2;
-      } else if (date.getDate() === 31) {
-        schedule = friday2;
-      }
-    } else if (date.getMonth() === 0 && date.getDate() === 30) { // Preview Day 1/30
-      schedule = previewDay;
-    } else if (date.getMonth() === 1 && date.getDate() === 15) { // Rally 2/15
-      schedule = rally;
-    } else if (date.getMonth() === 2) { // March Block Schedules
-      if (date.getDate() === 12 || date.getDate() === 19 || date.getDate() === 26) { // Tuesdays
-        schedule = blockTuesday;
-      } else if (date.getDate() === 13 || date.getDate() === 20 || date.getDate() === 27) { // Wednesdays
-        schedule = blockWedsMarch;
-      }
-    } else if (date.getMonth() === 3) { // April Block Schedules
-      if (date.getDate() === 16 || date.getDate() === 23 || date.getDate() === 18 || date.getDate() === 25) { // Tuesdays and Thursdays
-        schedule = blockTuesThurs;
-      } else if (date.getDate() === 17 || date.getDate() === 24) { // Wednesdays
-        schedule = blockWedsApril;
-      } else if (date.getDate() === 19 || date.getDate() === 26) { // Fridays
-        schedule = blockFriday;
-      }
+  var schedule = normal; // default to normal schedule
+  
+  if (day === 3) schedule = wednesday; // default to normal weds schedule on wednesdays
+  
+  if (month === 12) { // Sem 1 Finals
+    if (date === 18) {
+      schedule = tuesday1;
+    } else if (date === 19) {
+      schedule = wednesday1;
+    } else if (date === 20) {
+      schedule = thursday1;
+    } else if (date === 21) {
+      schedule = friday1;
     }
-
-    return schedule;
-  } else {
-    return null; // return null if sunday or saturday
+  } else if (month === 5) { // Sem 2 Finals
+      if (date === 28) {
+      schedule = tuesday2;
+    } else if (date === 39) {
+      schedule = wednesday2;
+    } else if (date === 30) {
+      schedule = thursday2;
+    } else if (date === 31) {
+      schedule = friday2;
+    }
+  } else if (month === 1 && date === 30) { // Preview Day 1/30
+    schedule = previewDay;
+  } else if (month === 2 && date === 15) { // Rally 2/15
+    schedule = rally;
+  } else if (month === 3) { // March Block Schedules
+    if (date === 12 || date === 19 || date === 26) { // Tuesdays
+      schedule = blockTuesday;
+    } else if (date === 13 || date === 20 || date === 27) { // Wednesdays
+      schedule = blockWedsMarch;
+    }
+  } else if (month === 4) { // April Block Schedules
+    if (date === 16 || date === 23 || date === 18 || date === 25) { // Tuesdays and Thursdays
+      schedule = blockTuesThurs;
+    } else if (date === 17 || date === 24) { // Wednesdays
+      schedule = blockWedsApril;
+    } else if (date === 19 || date === 26) { // Fridays
+      schedule = blockFriday;
+    }
   }
+
+  return schedule;
 }
 
 export function buildSchedule(s, header) {
