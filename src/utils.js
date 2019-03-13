@@ -25,6 +25,8 @@ function noSchool(date) {
     return date.getDate() === 14 || date.getDate() === 17; // teacher work days
   } else if (date.getMonth() === 3) { // april
     return date.getDate() >= 1 && date.getDate() <= 5; // spring break
+  } else if (date.getMonth() >= 5 && date.getMonth() < 7) { // summer
+    return true;
   }
 
   return false;
