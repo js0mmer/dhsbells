@@ -51,14 +51,14 @@ export function getScheduleFromDate(date) {
         schedule = friday1;
       }
     } else if (date.getMonth() === 4) { // Sem 2 Finals
-      if (date.getDate() === 25) {
-        schedule = friday2;
-      } else if (date.getDate() === 29) {
+       if (date.getDate() === 28) {
         schedule = tuesday2;
-      } else if (date.getDate() === 30) {
+      } else if (date.getDate() === 39) {
         schedule = wednesday2;
-      } else if (date.getDate() === 31) {
+      } else if (date.getDate() === 30) {
         schedule = thursday2;
+      } else if (date.getDate() === 31) {
+        schedule = friday2;
       }
     } else if (date.getMonth() === 0 && date.getDate() === 30) { // Preview Day 1/30
       schedule = previewDay;

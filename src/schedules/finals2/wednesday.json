@@ -3,7 +3,7 @@
     {
       "start":"8:00",
       "end":"10:00",
-      "name":"4th Period"
+      "name":"2nd Period"
     },
     {
       "start":"10:00",
@@ -13,7 +13,7 @@
     {
       "start":"10:20",
       "end":"12:20",
-      "name":"5th Period"
+      "name":"3rd Period"
     }
   ]
 }
