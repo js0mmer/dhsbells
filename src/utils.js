@@ -22,9 +22,10 @@ import blockFriday from './schedules/block/april/friday.js';
 
 function noSchool(date) {
   var month = date.getMonth() + 1;
+  var day = date.getDay();
   date = date.getDate();
 
-  if (date.getDay() === 0 || date.getDay() === 6) { // weekends
+  if (day === 0 || day === 6) { // weekends
     return true;
   } else if (month === 3) { // march
     return date === 14 || date === 17; // teacher work days
@@ -38,7 +39,7 @@ function noSchool(date) {
 }
 
 export function getScheduleFromDate(date) {
-  if (date === null || noSchool) return null;
+  if (date == null || noSchool(date)) return null;
 
   var day = date.getDay();
   var month = date.getMonth() + 1;
