@@ -2,6 +2,7 @@ import React from 'react';
 import normal from './schedules/normal';
 import wednesday from './schedules/wednesday';
 import rally from './schedules/rally';
+import minimumDay from './schedules/minimum-day';
 // import assembly from './schedules/assembly';
 import previewDay from './schedules/preview-day';
 // Final Schedules
@@ -78,6 +79,8 @@ export function getScheduleFromDate(date) {
       schedule = blockTuesday;
     } else if (date === 13 || date === 20 || date === 27) { // Wednesdays
       schedule = blockWedsMarch;
+    } else if (date === 29) { // minimum day
+      schedule = minimumDay;
     }
   } else if (month === 4) { // April Block Schedules
     if (date === 16 || date === 23 || date === 18 || date === 25) { // Tuesdays and Thursdays
