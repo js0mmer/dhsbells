@@ -5,7 +5,11 @@ html, body {
 }
 
 html {
-  background: #002892;
+  background: #111;
+}
+
+::selection {
+  background: #B4D5FF;
 }
 
 body {

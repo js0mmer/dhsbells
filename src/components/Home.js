@@ -52,7 +52,7 @@ function Info() {
     } else if (inPassingPeriod(s.periods, i, time)) {
       return (
         <div>
-          <h3>Passing Period</h3>
+          <h3>Transition Break</h3>
           <h1>Ends at {convertTo12Hour(s.periods[i + 1].start)}</h1>
           <h3 style={bottomMargin}>Next: {s.periods[i + 1].name} {convertTo12Hour(s.periods[i + 1].start)} - {convertTo12Hour(s.periods[i + 1].end)}</h3>
         </div>

@@ -43,7 +43,7 @@ class Schedules extends React.Component {
     return (
       <div>
         <h1>Schedules</h1>
-        <input type='date' min='2018-08-14' max='2019-05-31' value={this.state.value} onChange={this.handleChange} />
+        <input type='date' value={this.state.value} onChange={this.handleChange} />
         <br />
         <Day date={parseDate(this.state.value)} />
         <Schedule date={parseDate(this.state.value)} />
